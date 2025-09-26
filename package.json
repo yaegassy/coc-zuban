@@ -1,0 +1,153 @@
+{
+  "name": "@yaegassy/coc-zuban",
+  "version": "0.0.1",
+  "description": "zuban server extension for coc.nvim",
+  "author": "yaegassy <yosstools@gmail.com>",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "keywords": [
+    "coc.nvim",
+    "python",
+    "python3",
+    "linter",
+    "zuban",
+    "coc-zuban",
+    "vim",
+    "neovim"
+  ],
+  "engines": {
+    "coc": "^0.0.82"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yaegassy/coc-zuban.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "watch": "node esbuild.mjs --watch",
+    "build": "node esbuild.mjs",
+    "prepare": "node esbuild.mjs",
+    "typecheck": "tsc --noEmit",
+    "lint": "biome lint src/",
+    "lint:fix": "biome lint --write src/",
+    "format": "biome format src/",
+    "format:fix": "biome format --write src/",
+    "check": "biome check src/",
+    "check:fix": "biome check --write src/"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.2.4",
+    "@types/which": "^3.0.4",
+    "coc.nvim": "^0.0.83-next.18",
+    "esbuild": "^0.25.10",
+    "typescript": "^5.3.3",
+    "which": "^5.0.0"
+  },
+  "activationEvents": [
+    "onLanguage:python"
+  ],
+  "contributes": {
+    "rootPatterns": [
+      {
+        "filetype": "python",
+        "patterns": [
+          "pyproject.toml",
+          "mypy.ini",
+          ".mypy.ini",
+          "setup.cfg",
+          "setup.py",
+          "requirements.txt",
+          "uv.lock"
+        ]
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "coc-zuban configuration",
+      "properties": {
+        "zuban.enable": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable coc-zuban extension"
+        },
+        "zuban.path": {
+          "type": "string",
+          "default": "",
+          "description": "Custom path for the `zuban` binary when using the native server. If no value is set, the `zuban` command will be detected from the runtime environment."
+        },
+        "zuban.disableDiagnostics": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable diagnostics and pullDiagnostic only."
+        },
+        "zuban.disableCompletion": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable completion only."
+        },
+        "zuban.disableHover": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable hover only."
+        },
+        "zuban.disableDefinition": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable definition only."
+        },
+        "zuban.disableTypeDefinition": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable typeDefinition only."
+        },
+        "zuban.disableDeclaration": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable declaration only."
+        },
+        "zuban.disableImplementation": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable implementation only."
+        },
+        "zuban.disableReferences": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable references only."
+        },
+        "zuban.disableRename": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable rename only."
+        },
+        "zuban.disableDocumentHighlight": {
+          "type": "boolean",
+          "default": false,
+          "description": "Disable documentHighlight only."
+        },
+        "zuban.trace.server": {
+          "type": "string",
+          "enum": [
+            "off",
+            "messages",
+            "verbose"
+          ],
+          "default": "off",
+          "description": "Traces the communication between coc.nvim and the zuban server."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "zuban.showLogs",
+        "title": "Show logs"
+      },
+      {
+        "command": "zuban.restart",
+        "title": "Restart Server"
+      }
+    ]
+  }
+}
