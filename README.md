@@ -10,7 +10,11 @@ To use this coc extension, the `zuban` command must exist in the execution envir
 
 **CocInstall**:
 
-...TODO
+```vim
+:CocInstall @yaegassy/coc-zuban
+```
+
+> scoped packages
 
 **e.g. vim-plug**:
 
