@@ -15,7 +15,7 @@ To use this coc extension, the `zuban` command must exist in the execution envir
 **e.g. vim-plug**:
 
 ```vim
-Plug 'yaegassy/coc-zuban', {'do': 'pnpm install --frozen-lockfile'}
+Plug 'yaegassy/coc-zuban', {'do': 'pnpm install'}
 ```
 
 ## Configuration options
